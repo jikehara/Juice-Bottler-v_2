@@ -3,8 +3,7 @@ import java.util.List;
 
 /**
  * Taken from Nate Williams: https://github.com/YogoGit/JuiceBottler
- * Modifications from Joseph Ikehara
- * ~80% my code
+ * Modifications from Joseph Ikehara ~100% my code
  */
 
 public class Plant implements Runnable {
@@ -27,7 +26,6 @@ public class Plant implements Runnable {
 
 	private final Worker[] workers;
 	public final int plantNum;
-	private volatile boolean timeToWork;
 	private volatile int orangesProcessed;
 
 	public static void main(String[] args) {
@@ -78,7 +76,6 @@ public class Plant implements Runnable {
 	}
 
 	public void startPlant() {
-		timeToWork = true;
 		int i = 0;
 		for (Orange.State os : Orange.State.values()) {
 			workers[i] = new Worker(this, os);
@@ -88,7 +85,6 @@ public class Plant implements Runnable {
 
 	// Ends run() method
 	public void stopPlant() {
-		timeToWork = false;
 		for (Worker worker : workers) {
 			worker.stopWorker();
 		}
@@ -109,6 +105,7 @@ public class Plant implements Runnable {
 
 	/**
 	 * getters for each ArrayList type
+	 * 
 	 * @return ArrayList<Orange>
 	 */
 	public ArrayList<Orange> getOrangesPeeled() {

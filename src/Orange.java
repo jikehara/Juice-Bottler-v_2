@@ -1,7 +1,8 @@
 /**
  * Pulled from Nate Williams: https://github.com/YogoGit/JuiceBottler
- * @author Joseph Ikehara
- * This code is nearly identical to Nate William's Orange codes provided in class.
+ * 
+ * @author Joseph Ikehara This code is nearly identical to Nate William's Orange
+ *         codes provided in class.
  */
 
 public class Orange {
@@ -27,6 +28,10 @@ public class Orange {
 
 	private State state;
 
+	/**
+	 * constructor sets each new orange at the state "Fetched" and runs for the
+	 * amount of time it should take to fetch an Orange
+	 */
 	public Orange() {
 		state = State.Fetched;
 		doWork();
@@ -36,6 +41,10 @@ public class Orange {
 		return state;
 	}
 
+	/**
+	 * gets next state of the orange and runs the amount of time it takes to change
+	 * states
+	 */
 	public void runProcess() {
 		// Don't attempt to process an already completed orange
 		if (state == State.Processed) {
@@ -45,8 +54,10 @@ public class Orange {
 		doWork();
 	}
 
+	/**
+	 * waits for the amount of time for an orange to change state
+	 */
 	private void doWork() {
-		// Sleep for the amount of time necessary to do the work
 		try {
 			Thread.sleep(state.timeToComplete);
 		} catch (InterruptedException e) {
