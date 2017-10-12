@@ -1,3 +1,9 @@
+/**
+ * Pulled from Nate Williams: https://github.com/YogoGit/JuiceBottler
+ * @author Joseph Ikehara
+ * This code is nearly identical to Nate William's Orange codes provided in class.
+ */
+
 public class Orange {
 	public enum State {
 		Fetched(15), Peeled(38), Squeezed(29), Bottled(17), Processed(1);
